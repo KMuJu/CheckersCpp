@@ -3,9 +3,12 @@
 
 #include <iostream>
 
-PlayerManager::PlayerManager() {
+#include "Board.hpp"
+
+PlayerManager::PlayerManager(Board* board) {
   // init
   state = STATE::waiting;
+  this->board = board;
 }
 
 void PlayerManager::klikk(int index) {
@@ -16,5 +19,7 @@ void PlayerManager::klikk(int index) {
   }
   target = index;
   state = STATE::waiting;
-  std::cout << "Start: " << start << ", Target: " << target << "\n";
+  Move m = {start, target};
+  board->move(m);
+  // std::cout << "Start: " << start << ", Target: " << target << "\n";
 }

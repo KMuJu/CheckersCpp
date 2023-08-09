@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <iostream>
 
-PieceList::PieceList(int max_number) {
+PieceList::PieceList(int max_number) : numPieces(0) {
   this->maxPieces = max_number;
   pieces = new int[max_number];
 }
@@ -18,7 +18,7 @@ void PieceList::reset() {
 
 void PieceList::add(int square) {
   if (numPieces >= maxPieces || numPieces < 0) {
-    std::cout << "!!!!!!feil i add!!!!!!!!!!\n";
+    std::cout << "!!!feil i add!!! " << numPieces << ", " << maxPieces << "\n";
     return;
   }
   pieces[numPieces] = square;

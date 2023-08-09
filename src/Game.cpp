@@ -35,14 +35,14 @@ void Game::init() {
 void Game::klikk(int x, int y) {
   // klikk
   playerManager.klikk(x + y * 8);
-  // std::cout << "Piece: " << board[x + y * 8]->piece << "\n";
+  // std::cout << "Piece: " << board[x + y * 8] << "\n";
 }
 
 void Game::renderBoardSquare() const {
   SDL_Rect rect;
   for (int y = 0; y < 8; y++) {
     for (int x = 0; x < 8; x++) {
-      int colour = ((x + y) % 2 == 0) ? 0xa87951 : 0xddcfc3;
+      int colour = ((x + y) % 2 != 0) ? 0xa87951 : 0xddcfc3;
       rect.x = x * Constants::TILESIZE;
       rect.y = y * Constants::TILESIZE;
       rect.w = Constants::TILESIZE;

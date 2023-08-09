@@ -16,7 +16,7 @@ class Game {
  private:
   STATE state;
   Board board;
-  PlayerManager playerManager;
+  PlayerManager playerManager = {&board};
   void init();
 
   void renderBoardSquare() const;

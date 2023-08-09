@@ -1,6 +1,8 @@
 #pragma once
 #include "Move.hpp"
 #include "PieceList.hpp"
+#include "PieceManager.hpp"
+#include <stack>
 
 class Board {
  public:
@@ -9,15 +11,18 @@ class Board {
   void renderPieces() const;
   void init();
 
-  int* operator[](int i);
+  int operator[](int i);
 
   void move(Move& m);
 
  private:
   int board[64];
-  PieceList whiteMan{12};
-  PieceList blackMan{12};
-  PieceList whiteKing{12};
-  PieceList blackKing{12};
-  PieceList empty{0};
+  PieceManager pieceManager;
+
+  void addPiece(int square, int piece);
+  void removePiece(int square, int piece);
+  void movePiece(int start, int target, int piece);
+
+  int currentGameState;
+  std::stack<int> boardHistory;
 };

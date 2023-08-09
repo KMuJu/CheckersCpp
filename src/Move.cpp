@@ -13,14 +13,10 @@ Move::Move(int start, int target) {
 
 Move::Move(int start, int target, int capture) {
   // sets capture bits
-  moveValue = start + (target << 6) + (capture << 12);
+  moveValue = start + (target << 6) + (capture << 12) + isCaptureMask;
 }
 
 void Move::setPromotion() {
   // sets move to promotion
-  moveValue |= isPromotion;
+  moveValue |= isPromotionMask;
 }
-
-int Move::getStart() { return moveValue & startMask; }
-int Move::getTarget() { return (moveValue & targetMask) >> 6; }
-int Move::getCapture() { return (moveValue & captureMask) >> 12; }

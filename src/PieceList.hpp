@@ -11,6 +11,7 @@ struct PieceList {
   // free allocated memory
   ~PieceList();
 
+  int size() { return numPieces; }
   void reset();
   void add(int square);
   void remove(int square);
